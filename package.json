@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/SimoneGonzalez/Angular-Addresses/issues"
   },
-  "homepage": "https://github.com/SimoneGonzalez/Angular-Addresses#readme"
+  "homepage": "https://github.com/SimoneGonzalez/Angular-Addresses#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "load-grunt-tasks": "^3.2.0"
+  }
 }
