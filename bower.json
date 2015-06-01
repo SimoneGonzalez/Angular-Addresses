@@ -1,0 +1,17 @@
+{
+  "name": "Angular-Addresses",
+  "version": "1.0.0",
+  "homepage": "https://github.com/SimoneGonzalez/Angular-Addresses",
+  "authors": [
+    "Simone Gonzalez <simone.b.gonzalez@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
