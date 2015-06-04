@@ -1,0 +1,27 @@
+[
+  {
+    "name":"Ben",
+    "twitter":"@ben123",
+    "phone":"6151113333"
+    },
+  {
+    "name":"Dan",
+    "twitter":"@dandan",
+    "phone":"6151123333"
+    },
+  {
+    "name":"Elsa",
+    "twitter":"@letitgo",
+    "phone":"6151114333"
+    },
+  {
+    "name":"Amanda",
+    "twitter":"@princessamanda",
+    "phone":"6151113338"
+    },
+  {
+    "name":"Charity",
+    "twitter":"@nonprofit",
+    "phone":"6151113533"
+    }
+]

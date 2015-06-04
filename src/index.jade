@@ -1,12 +1,70 @@
 doctype html
-html(lang="en-US")
+html(lang="en-US", ng-app="angularAddresses")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title Angular Addresses
-  body
+    link(rel="stylesheet" href="lib/build.css")
+  body(ng-controller="Main as main")
     .container
-HEAD
-      script(src="lib/build.js")
-      script(src="js/main.js")
+      h1 Angular Addresses
+      h2 Search
+        input(placeholder="Search", ng-model="query")
+      table.table
+        thead
+          tr
+            th
+            th Name
+            th Phone
+            th Twitter
+        tbody
+          tr(ng-repeat="(id, person) in main.people | objToArr | orderBy:'name' | filter:query")
+            td: button.btn.btn-xs.btn-danger(ng-click="main.removeAddress(id)") X
+            td {{ person.name }}
+            td: a(href="tel:{{person.phone}}") {{ person.phone }}
+            td: a(href="http://twitter.com/{{person.twitter}}", target="_blank") {{person.twitter}}
+
+      .btn.btn-primary(data-toggle="modal", data-target="#modal") Add Contact
+      .modal.fade#modal
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close(data-dismiss="modal")
+                span &times;
+              h1 New Address
+            .modal-body
+              form(name="newAddressForm", novalidate)
+                .form-group(ng-class="{'has-success': newAddressForm.n.$dirty && main.newPerson.name.length > 1, 'has-error': newAddressForm.n.$dirty && !main.newPerson.name}")
+                  label.control-label Name
+                  input.form-control(name="n", type="text", placeholder="John", ng-model="main.newPerson.name", required)
+                .form-group(ng-class="{'has-success': newAddressForm.p.$dirty && main.newPerson.phone, 'has-error': newAddressForm.p.$dirty && !main.newPerson.phone}")
+                  label.control-label Phone
+                  input.form-control(name="p", type="tel", placeholder="615-555-5555", ng-model="main.newPerson.phone", required)
+                .form-group(ng-class="{'has-success': newAddressForm.t.$dirty && main.newPerson.twitter.length > 1 && main.newPerson.twitter[0] === '@' , 'has-error': newAddressForm.t.$dirty && (main.newPerson.twitter.length < 2 || main.newPerson.twitter[0] !== '@')}")
+                  label.control-label Twitter
+                  input.form-control(name="t", type="text", placeholder="@abc123", ng-model="main.newPerson.twitter", required)
+            .modal-footer
+              button.btn.btn-danger(data-dismiss="modal") Cancel
+              button.btn.btn-primary(data-dismiss="modal", ng-click="newAddressForm.$valid && main.addNewAddress()", ng-disabled="newAddressForm.$invalid") Add Person to Address Book
+
+    script(src="lib/build.js")
+    script(src="js/main.js")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
